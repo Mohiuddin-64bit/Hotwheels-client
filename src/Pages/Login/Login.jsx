@@ -5,7 +5,7 @@ const Login = () => {
     <div>
       <div className="hero min-h-screen bg-base-200">
         <div className="hero-content flex-col">
-          <div className="card  w-[400px] h-[700px] shadow-2xl bg-base-100">
+          <div className="card w-[400px] h-[700px] shadow-2xl bg-base-100">
             <div className="text-center lg:text">
               <h1 className="text-5xl font-bold py-5 ">Login</h1>
             </div>

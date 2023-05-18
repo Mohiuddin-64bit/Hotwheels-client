@@ -57,7 +57,7 @@ const Navbar = () => {
               <Link>My Toys</Link>
             </li>
             <li>
-              <Link>Add a Toys</Link>
+              <Link to='addToy'>Add a Toys</Link>
             </li>
             <li>
               <Link>Blog</Link>
