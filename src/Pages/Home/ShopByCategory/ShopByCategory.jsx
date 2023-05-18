@@ -1,13 +1,22 @@
+import { useEffect, useState } from "react";
+import CategoryCard from "./CategoryCard";
 
 const ShopByCategory = () => {
+  const [toys, setToys] = useState([]);
+  useEffect(() => {
+    fetch("http://localhost:5000/allToy")
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setToys(data);
+      });
+  }, []);
   return (
     <div>
-      <div className="w-full h-12 mx-auto">
-        <div className="tabs tabs-boxed">
-          <a className="tab">Tab 1</a>
-          <a className="tab tab-active">Tab 2</a> 
-          <a className="tab">Tab 3</a>
-        </div>
+      <div className="grid grid-cols-3 gap-3 px-12">
+        {toys.map((toy) => (
+          <CategoryCard key={toy._id} toy={toy}></CategoryCard>
+        ))}
       </div>
     </div>
   );
