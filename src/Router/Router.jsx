@@ -3,11 +3,12 @@ import Main from "../Layout/Main";
 import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login";
 import Registration from "../Pages/Registration/Registration";
-import AddToy from "../Pages/AddToy/AddToy";
+import AddToy from "../Pages/Home/AddToy/AddToy";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import CarDetails from "../Pages/Home/ShopByCategory/CarDetails";
 import PrivateRouter from "../PrivateRouter/PrivateRouter";
+import AllToy from "../Pages/Home/AllToy/AllToy";
 
 const router = createBrowserRouter([
   {
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
       {
         path: "addToy",
         element: <AddToy></AddToy>,
+      },
+      {
+        path: 'allToy',
+        element: <AllToy></AllToy>
       },
       {
         path: '/carDetails/:id',

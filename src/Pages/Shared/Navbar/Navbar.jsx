@@ -66,7 +66,7 @@ const Navbar = () => {
               <Link>Home</Link>
             </li>
             <li>
-              <Link>All Toys</Link>
+              <Link to='allToy'>All Toys</Link>
             </li>
             <li>
               <Link>Blog</Link>
