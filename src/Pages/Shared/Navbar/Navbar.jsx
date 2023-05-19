@@ -41,14 +41,21 @@ const Navbar = () => {
                 <Link>All Toys</Link>
               </li>
               <li>
-                <Link>My Toys</Link>
-              </li>
-              <li>
-                <Link>Add a Toys</Link>
-              </li>
-              <li>
                 <Link>Blog</Link>
               </li>
+              {user ? (
+                <>
+                  {" "}
+                  <li>
+                    <Link>My Toys</Link>
+                  </li>
+                  <li>
+                    <Link to="addToy">Add a Toys</Link>
+                  </li>
+                </>
+              ) : (
+                <></>
+              )}
             </ul>
           </div>
           <img className="w-24" src="logo/logo1.png" alt="" />
@@ -62,19 +69,55 @@ const Navbar = () => {
               <Link>All Toys</Link>
             </li>
             <li>
-              <Link>My Toys</Link>
-            </li>
-            <li>
-              <Link to='addToy'>Add a Toys</Link>
-            </li>
-            <li>
               <Link>Blog</Link>
             </li>
+            {user ? (
+              <>
+                {" "}
+                <li>
+                  <Link>My Toys</Link>
+                </li>
+                <li>
+                  <Link to="addToy">Add a Toys</Link>
+                </li>
+              </>
+            ) : (
+              <></>
+            )}
           </ul>
         </div>
         <div className="navbar-end">
-          <button className="btn bg-custom-gradient mr-2"><Link to='/login'>Login</Link></button>
-          <button className="btn bg-custom-gradient"><Link to='/registration'>Registration</Link></button>
+          {user ? (
+            <>
+              <div className="flex items-center gap-5">
+                <div className="flex items-center">
+                  <div className="avatar online">
+                    <div className="w-12 rounded-full">
+                      <img src={user.photoURL} />
+                    </div>
+                  </div>
+                  <p className="font-bold lg:block hidden ml-4">
+                    {user.displayName || user.email}
+                  </p>
+                </div>
+                <button
+                  className="btn bg-custom-gradient"
+                  onClick={handleLogOut}
+                >
+                  Log Out
+                </button>
+              </div>
+            </>
+          ) : (
+            <>
+              <button className="lg:btn p-2 rounded  text-white text-sm bg-custom-gradient mr-2">
+                <Link to="/login">Login</Link>
+              </button>
+              <button className="lg:btn p-2 rounded text-white text-sm bg-custom-gradient">
+                <Link to="/registration">Registration</Link>
+              </button>
+            </>
+          )}
         </div>
       </div>
     </div>
