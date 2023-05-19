@@ -4,20 +4,19 @@ import { AuthContext } from "../../Provider/AuthProvider";
 
 const Login = () => {
   const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
   const [user, setUser] = useState("");
   const { signIn, googleSign } = useContext(AuthContext);
   const navigate = useNavigate();
-  const location = useLocation()
-  const from = location.state?.from?.pathname || '/';
-  console.log(from)
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
 
   const handleForm = (event) => {
     event.preventDefault();
-    
+
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
-
 
     setError("");
     if (password.length < 6) {
@@ -27,7 +26,8 @@ const Login = () => {
       .then((result) => {
         console.log(result.user);
         setUser(result.user);
-        // navigate("/");
+        setSuccess("Login successfully");
+        navigate("/");
       })
       .catch((error) => setError(error.message));
   };
@@ -38,6 +38,7 @@ const Login = () => {
         const user = result.user;
         setUser(user);
         navigate(from, { replace: true });
+        setSuccess("Login successfully");
       })
       .catch((error) => setError(error.message));
   };
@@ -101,9 +102,20 @@ const Login = () => {
                     />
                   </div>
                 </div>
-                
               </div>
-                <p className="mt-5">Create an Account? <Link className="text-blue-500 font-bold" to='../registration'>Click Here</Link></p>
+              <p className="mt-5">
+                Create an Account?{" "}
+                <Link className="text-blue-500 font-bold" to="../registration">
+                  Click Here
+                </Link>
+              </p>
+              <span className="text-green-500 font-bold text-lg">
+                <small>{success}</small>
+              </span>
+              <br />
+              <span className="text-red-500 font-bold text-lg">
+                <small>{error}</small>
+              </span>
             </form>
           </div>
         </div>
