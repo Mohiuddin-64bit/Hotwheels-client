@@ -10,7 +10,7 @@ const AddToy = () => {
   const onSubmit = (data) => {
     // Send the form data to the backend (e.g., via API or AJAX request)
     console.log(data);
-    fetch('https://hotwheels-server.vercel.app/addToy', {
+    fetch('http://localhost:5000/addToy', {
       method: "POST",
       headers: {
         'Content-Type': "application/json"
@@ -35,7 +35,6 @@ const AddToy = () => {
                   Picture
                 </label>
                 <input
-                defaultValue="https://i.ibb.co/K63XDW4/pexels-alexgtacar-1592384.jpg"
                   className="input input-bordered"
                   id="picture"
                   type="text"
@@ -55,6 +54,20 @@ const AddToy = () => {
                   id="name"
                   type="text"
                   {...register("name", { required: true })}
+                />
+                {errors.name && (
+                  <span className="text-red-500">This field is required</span>
+                )}
+              </div>
+              <div className=" form-control">
+                <label htmlFor="name" className="block mb-1 label">
+                  Available Quantity
+                </label>
+                <input
+                  className="input input-bordered"
+                  id="quantity"
+                  type="number"
+                  {...register("quantity", { required: true })}
                 />
                 {errors.name && (
                   <span className="text-red-500">This field is required</span>
@@ -84,7 +97,6 @@ const AddToy = () => {
                   className="input input-bordered"
                   id="rating"
                   type="number"
-                  step="0.1"
                   {...register("rating", { required: true })}
                 />
                 {errors.rating && (

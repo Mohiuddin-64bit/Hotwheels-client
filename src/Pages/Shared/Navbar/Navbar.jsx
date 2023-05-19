@@ -1,6 +1,14 @@
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../../Provider/AuthProvider";
+import { useContext } from "react";
 
 const Navbar = () => {
+  const { user, logOut } = useContext(AuthContext);
+  const handleLogOut = () => {
+    logOut()
+      .then((result) => {})
+      .catch((error) => console.log(error));
+  };
   return (
     <div>
       <div className="navbar bg-base-100 px-12 mt-3">
@@ -65,8 +73,8 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end">
-          {/* <a className="btn">Get started</a> */}
-          <button className="btn bg-custom-gradient"><Link to='/login'>Login</Link></button>
+          <button className="btn bg-custom-gradient mr-2"><Link to='/login'>Login</Link></button>
+          <button className="btn bg-custom-gradient"><Link to='/registration'>Registration</Link></button>
         </div>
       </div>
     </div>

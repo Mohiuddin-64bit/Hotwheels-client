@@ -1,6 +1,46 @@
-import { Link } from "react-router-dom";
+import { useState, useContext } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const Login = () => {
+  const [error, setError] = useState("");
+  const [user, setUser] = useState("");
+  const { signIn, googleSign } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation()
+  const from = location.state?.from?.pathname || '/';
+  console.log(from)
+
+  const handleForm = (event) => {
+    event.preventDefault();
+    
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
+
+
+    setError("");
+    if (password.length < 6) {
+      return setError("Password should be more then 6 digits");
+    }
+    signIn(email, password)
+      .then((result) => {
+        console.log(result.user);
+        setUser(result.user);
+        // navigate("/");
+      })
+      .catch((error) => setError(error.message));
+  };
+
+  const signInWithGoogle = () => {
+    googleSign()
+      .then((result) => {
+        const user = result.user;
+        setUser(user);
+        navigate(from, { replace: true });
+      })
+      .catch((error) => setError(error.message));
+  };
   return (
     <div>
       <div className="hero min-h-screen bg-base-200">
@@ -9,7 +49,7 @@ const Login = () => {
             <div className="text-center lg:text">
               <h1 className="text-5xl font-bold py-5 ">Login</h1>
             </div>
-            <div className="card-body">
+            <form onSubmit={handleForm} className="card-body">
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Email</span>
@@ -50,7 +90,7 @@ const Login = () => {
               </div>
               <div className="flex justify-center mt-5 gap-2">
                 <div
-                  // onClick={signInWithGoogle}
+                  onClick={signInWithGoogle}
                   className="flex items-center cursor-pointer bg-custom-gradient rounded-full p-3"
                 >
                   <div>
@@ -61,21 +101,10 @@ const Login = () => {
                     />
                   </div>
                 </div>
-                <div
-                  // onClick={signInWithGitHub}
-                  className="flex items-center cursor-pointer bg-custom-gradient rounded-full p-3"
-                >
-                  <div>
-                    <img
-                      className="w-10 h-10 rounded-full"
-                      src="logo/github.png"
-                      alt=""
-                    />
-                  </div>
-                </div>
+                
               </div>
                 <p className="mt-5">Create an Account? <Link className="text-blue-500 font-bold" to='../registration'>Click Here</Link></p>
-            </div>
+            </form>
           </div>
         </div>
       </div>
