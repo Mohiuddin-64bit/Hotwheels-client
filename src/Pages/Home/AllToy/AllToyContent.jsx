@@ -1,6 +1,17 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../../Provider/AuthProvider";
+import { toast } from "react-toastify";
 
 const AllToyContent = ({ data }) => {
+  const {user} = useContext(AuthContext)
+  const handleViewDetail = () => {
+    if (!user) {
+      toast.error("You have to login to see the details");
+      
+      return;
+    }
+  };
   return (
     <>
       <tr>
@@ -10,7 +21,14 @@ const AllToyContent = ({ data }) => {
         <td>{data.price}</td>
         <td>{data.quantity}</td>
         <th>
-          <button className="btn btn-ghost btn-xs">details</button>
+        <Link to={`/carDetails/${data._id}`}>
+              <button
+                onClick={handleViewDetail}
+                className="btn bg-custom-gradient text-white w-full"
+              >
+                View Details
+              </button>
+            </Link>
         </th>
       </tr>
     </>

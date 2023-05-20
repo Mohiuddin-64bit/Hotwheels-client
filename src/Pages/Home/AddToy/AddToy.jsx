@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../../Provider/AuthProvider";
-
+import { toast } from "react-toastify";
 const AddToy = () => {
   const { user } = useContext(AuthContext);
   const {
@@ -23,6 +23,7 @@ const AddToy = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
+        toast.success("Car add Successfully");
       });
   };
 

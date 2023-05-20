@@ -75,7 +75,7 @@ const Navbar = () => {
               <>
                 {" "}
                 <li>
-                  <Link>My Toys</Link>
+                  <Link to='myToy'>My Toys</Link>
                 </li>
                 <li>
                   <Link to="addToy">Add a Toys</Link>

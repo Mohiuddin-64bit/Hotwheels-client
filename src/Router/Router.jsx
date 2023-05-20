@@ -9,6 +9,7 @@ import "react-toastify/dist/ReactToastify.css";
 import CarDetails from "../Pages/Home/ShopByCategory/CarDetails";
 import PrivateRouter from "../PrivateRouter/PrivateRouter";
 import AllToy from "../Pages/Home/AllToy/AllToy";
+import MyToy from "../Pages/Home/MyToy/MyToy";
 
 const router = createBrowserRouter([
   {
@@ -39,6 +40,10 @@ const router = createBrowserRouter([
       {
         path: 'allToy',
         element: <AllToy></AllToy>
+      },
+      {
+        path: 'myToy',
+        element: <MyToy></MyToy>
       },
       {
         path: '/carDetails/:id',
