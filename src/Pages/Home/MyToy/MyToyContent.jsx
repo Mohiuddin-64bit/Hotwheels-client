@@ -1,20 +1,24 @@
-const MyToyContent = ({myToy}) => {
-  console.log(myToy)
+
+import UpdateModal from "../Update/UpdateModal";
+
+const MyToyContent = ({ myToy, handleToyUpdate, handleDelete }) => {
   return (
     <>
       <tr>
-        <td>
-          <div className="font-bold">{myToy.toyName}</div>
+        <th>{myToy.toyName}</th>
+        <td>{myToy.quantity}</td>
+        <td>{myToy.price}</td>
+
+        <th className="flex justify-center">
           
-        </td>
-        <td>
-          {myToy.quantity}
-        </td>
-        <td>$ {myToy.price}</td>
-        <th>
-          <button className="btn bg-custom-gradient">View Details</button>
+          <button onClick={() => handleDelete(myToy._id)} className="btn bg-custom-gradient mr-3">Delete</button>
+
+          <label htmlFor="updateModal" className="btn bg-custom-gradient">
+            Update
+          </label>
         </th>
       </tr>
+      <UpdateModal handleToyUpdate={handleToyUpdate} myToy={myToy}></UpdateModal>
     </>
   );
 };

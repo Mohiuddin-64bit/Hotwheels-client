@@ -46,7 +46,7 @@ const ShopByCategory = () => {
         </a>
       </div>
 
-      <div className="flex justify-center gap-12 px-12 pb-12">
+      <div className="lg:flex flex-wrap  justify-center gap-12 px-12 pb-12">
         {toys.map((toy) => (
           <CategoryCard key={toy._id} toy={toy}>
           </CategoryCard>

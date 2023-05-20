@@ -7,22 +7,20 @@ import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 
 const CategoryCard = ({ toy }) => {
-  const { picture, name, price, rating, _id } = toy || {};
+  const { picture, toyName, price, rating, _id } = toy || {};
   const { user } = useContext(AuthContext);
   const handleViewDetail = () => {
     if (!user) {
-      toast.error("You have to login to see the details");
-      
-      return;
+      return toast.error("You have to login to see the details");
     }
   };
 
   return (
-    <div className="">
-      <div className="max-w-[300px] max-h-[500px] bg-white shadow-xl rounded-lg overflow-hidden">
+    <div className="flex  flex-col items-center">
+      <div className="w-72 h-[450px]  bg-white shadow-xl rounded-lg overflow-hidden">
         <img src={picture} alt={name} className="h-64 w-full object-cover" />
         <div className="p-4">
-          <h2 className="text-xl font-bold">{name}</h2>
+          <h2 className="text-xl font-bold">{toyName}</h2>
           <p className="text-gray-700 mb-2">$ {price}</p>
           <Rating
             initialRating={rating}

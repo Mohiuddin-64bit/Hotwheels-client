@@ -7,6 +7,7 @@ const AddToy = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
 
@@ -24,6 +25,7 @@ const AddToy = () => {
       .then((data) => {
         console.log(data);
         toast.success("Car add Successfully");
+        reset()
       });
   };
 
@@ -128,19 +130,35 @@ const AddToy = () => {
                   )}
                 </div>
               </div>
-              <div className=" ">
-                <label htmlFor="name" className="block mb-1 label">
-                  Available Quantity
-                </label>
-                <input
-                  className="input input-bordered"
-                  id="quantity"
-                  type="number"
-                  {...register("quantity", { required: true })}
-                />
-                {errors.name && (
-                  <span className="text-red-500">This field is required</span>
-                )}
+              <div className="flex gap-4">
+                <div className=" ">
+                  <label htmlFor="name" className="block mb-1 label">
+                    Available Quantity
+                  </label>
+                  <input
+                    className="input input-bordered"
+                    id="quantity"
+                    type="number"
+                    {...register("quantity", { required: true })}
+                  />
+                  {errors.name && (
+                    <span className="text-red-500">This field is required</span>
+                  )}
+                </div>
+                <div className=" ">
+                  <label htmlFor="name" className="block mb-1 label">
+                    Description
+                  </label>
+                  <input
+                    className="input input-bordered"
+                    id="description"
+                    type="text"
+                    {...register("description", { required: true })}
+                  />
+                  {errors.name && (
+                    <span className="text-red-500">This field is required</span>
+                  )}
+                </div>
               </div>
               <div className="">
                 <label htmlFor="category" className="block mb-1">

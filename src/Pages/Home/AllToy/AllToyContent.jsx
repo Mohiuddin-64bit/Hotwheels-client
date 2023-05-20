@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 
 const AllToyContent = ({ data }) => {
   const {user} = useContext(AuthContext)
+
   const handleViewDetail = () => {
     if (!user) {
       toast.error("You have to login to see the details");
@@ -15,8 +16,8 @@ const AllToyContent = ({ data }) => {
   return (
     <>
       <tr>
-        <th>{data.name}</th>
-        <td>{data.name}</td>
+        <th>{data.sellerName}</th>
+        <td>{data.toyName}</td>
         <td>{data.category}</td>
         <td>{data.price}</td>
         <td>{data.quantity}</td>
