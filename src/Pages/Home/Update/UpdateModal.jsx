@@ -70,12 +70,12 @@ const UpdateModal = ({ myToy, handleToyUpdate }) => {
                     )}
                   </div>
                   <div className=" ">
-                    <label htmlFor="picture" className="hidden mb-1 label">
+                    <label htmlFor="picture" className=" mb-1 label">
                       id
                     </label>
                     <input
                       defaultValue={myToy._id}
-                      className="input hidden input-bordered"
+                      className="input  input-bordered"
                       id="id"
                       type="text"
                       {...register("id", { required: true })}

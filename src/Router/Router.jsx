@@ -11,6 +11,7 @@ import PrivateRouter from "../PrivateRouter/PrivateRouter";
 import AllToy from "../Pages/Home/AllToy/AllToy";
 import MyToy from "../Pages/Home/MyToy/MyToy";
 import ErrorPage from "../Pages/Home/ErrorPage/ErrorPage";
+import Blog from "../Pages/Home/Blog/Blog";
 
 const router = createBrowserRouter([
   {
@@ -46,6 +47,10 @@ const router = createBrowserRouter([
       {
         path: 'myToy',
         element: <MyToy></MyToy>
+      },
+      {
+        path: '/blog',
+        element: <Blog></Blog>
       },
       {
         path: '/carDetails/:id',

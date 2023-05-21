@@ -2,6 +2,9 @@ import { Link } from "react-router-dom";
 import UpdateModal from "../Update/UpdateModal";
 
 const MyToyContent = ({ myToy, handleToyUpdate, handleDelete }) => {
+  const handleId = (id) => {
+    console.log(id)
+  }
   return (
     <>
       <tr>
@@ -27,7 +30,7 @@ const MyToyContent = ({ myToy, handleToyUpdate, handleDelete }) => {
               View Details
             </button>
           </Link>
-          <label htmlFor="updateModal" className="btn bg-custom-gradient">
+          <label onClick={() => handleId(myToy._id)} htmlFor="updateModal" className="btn bg-custom-gradient">
             Update
           </label>
         </th>
