@@ -7,7 +7,7 @@ const MyToy = () => {
   const { user } = useContext(AuthContext);
   const [myToys, setMyToys] = useState([]);
   useEffect(() => {
-    fetch(`https://hotwheels-server.vercel.app/myToy/${user?.email}`)
+    fetch(`http://localhost:5000/myToy/${user?.email}`)
       .then((res) => res.json())
       .then((data) => {
         setMyToys(data);
@@ -17,7 +17,7 @@ const MyToy = () => {
 
   const handleToyUpdate = (data) => {
     toast.promise(
-      fetch(`https://hotwheels-server.vercel.app/updateToy/${data.id}`, {
+      fetch(`http://localhost:5000/updateToy/${data.id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
@@ -39,7 +39,7 @@ const MyToy = () => {
 
   const handleDelete = (id) => {
     toast.promise(
-      fetch(`https://hotwheels-server.vercel.app/deleteToy/${id}`, {
+      fetch(`http://localhost:5000/deleteToy/${id}`, {
         method: "DELETE",
         headers: { "Content-Type": "application/json" },
       })

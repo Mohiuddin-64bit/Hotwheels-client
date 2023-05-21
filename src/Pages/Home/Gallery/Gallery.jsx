@@ -1,3 +1,5 @@
+import Subscription from "../Subscription/Subscription";
+
 const Gallery = () => {
   return (
     <>
@@ -40,6 +42,12 @@ const Gallery = () => {
         </div>
       </div>
       {/* Add other image elements here */}
+
+
+    </div>
+    <div className="my-12">
+
+      <Subscription></Subscription>
     </div>
     </>
   );

@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-import UpdateModal from "../Update/UpdateModal";
+// import UpdateModal from "../Update/UpdateModal";
+import UpdatePage from "../Update/UpdatePage";
 
 const MyToyContent = ({ myToy, handleToyUpdate, handleDelete }) => {
   const handleId = (id) => {
@@ -30,15 +31,24 @@ const MyToyContent = ({ myToy, handleToyUpdate, handleDelete }) => {
               View Details
             </button>
           </Link>
-          <label onClick={() => handleId(myToy._id)} htmlFor="updateModal" className="btn bg-custom-gradient">
+          {/* <label onClick={() => handleId(myToy._id)} htmlFor="updateModal" className="btn bg-custom-gradient">
             Update
-          </label>
+          </label> */}
+          <Link onClick={() => handleId(myToy._id)} className="mr-3" to={`/updatePage`}>
+            <button className="btn  bg-custom-gradient text-white w-full">
+              Update
+            </button>
+          </Link>
         </th>
       </tr>
-      <UpdateModal
+      {/* <UpdateModal
         handleToyUpdate={handleToyUpdate}
         myToy={myToy}
-      ></UpdateModal>
+      ></UpdateModal> */}
+      <UpdatePage
+        handleToyUpdate={handleToyUpdate}
+        myToy={myToy}
+      ></UpdatePage>
     </>
   );
 };
