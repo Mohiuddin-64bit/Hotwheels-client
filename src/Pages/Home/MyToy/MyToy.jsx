@@ -1,7 +1,9 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../Provider/AuthProvider";
 import MyToyContent from "./MyToyContent";
+import { toast } from "react-toastify";
 const MyToy = () => {
+  const [reload, setReload] = useState(false);
   const { user } = useContext(AuthContext);
   const [myToys, setMyToys] = useState([]);
   useEffect(() => {
@@ -10,27 +12,50 @@ const MyToy = () => {
       .then((data) => {
         setMyToys(data);
       });
-    }, [user]);
+  }, [user, reload]);
+
 
   const handleToyUpdate = (data) => {
-    fetch(`http://localhost:5000/updateToy/${data.id}`, {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data),
-    })
-      .then((res) => res.json())
-      .then((data) => console.log(data));
-      console.log(data.id)
+    toast.promise(
+      fetch(`http://localhost:5000/updateToy/${data.id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.modification > 0) {
+            setReload(!reload);
+          }
+        }),
+      {
+        pending: "Updating...",
+        success: "Updated successfully!",
+        error: "Failed to Update.",
+      }
+    );
   };
 
+
   const handleDelete = (id) => {
-    fetch(`http://localhost:5000/deleteToy/${id}`, {
-      method: "DELETE",
-      headers: { "Content-Type": "application/json" },
-    })
-      .then((res) => res.json())
-      .then((data) => console.log(data));
-      console.log(id)
+    toast.promise(
+      fetch(`http://localhost:5000/deleteToy/${id}`, {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          if (data.deletedCount > 0) {
+            setReload(!reload);
+          }
+        }),
+      {
+        pending: "Deleting...",
+        success: "Deleted successfully!",
+        error: "Failed to delete.",
+      }
+    );
   };
 
   return (
@@ -45,7 +70,6 @@ const MyToy = () => {
               <th>Price</th>
               <th></th>
             </tr>
-
           </thead>
           <tbody>
             {myToys.map((myToy) => (
