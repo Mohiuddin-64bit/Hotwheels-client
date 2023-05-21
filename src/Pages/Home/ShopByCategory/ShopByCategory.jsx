@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import CategoryCard from "./CategoryCard";
+import AddressSection from "../Address/Address";
 
 
 const ShopByCategory = () => {
@@ -17,6 +18,7 @@ const ShopByCategory = () => {
       });
   }, [activeTab]);
   return (
+    <>
     <div className="bg-base-200 py-12">
       <h2 className="text-center font-bold text-5xl mb-12">Shop By Category</h2>
       <div className="tabs tabs-boxed justify-center my-8">
@@ -53,6 +55,8 @@ const ShopByCategory = () => {
         ))}
       </div>
     </div>
+    <AddressSection></AddressSection>
+    </>
   );
 };
 

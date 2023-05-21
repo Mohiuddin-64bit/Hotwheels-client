@@ -30,7 +30,7 @@ const Subscription = () => {
           />
           <button
             type="submit"
-            className="bg-blue-500 rounded-r-lg px-4 py-2 text-white font-bold hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="btn bg-custom-gradient"
           >
             Subscribe
           </button>

@@ -31,7 +31,7 @@ const Banner = () => {
               countless adventures with Hotwheels, your ultimate destination for
               the finest toy cars. Start your engines and let the fun begin!
             </p>
-            <button className="btn bg-custom-gradient">Get Started</button>
+            
           </div>
         </div>
       </div>
