@@ -1,14 +1,18 @@
 const Footer = () => {
   return (
     <div>
-      <footer className="footer p-10 bg-custom-gradient text-neutral-content">
+      <footer className="footer p-10 bg-custom-gradient text-white ">
         <div>
-          <h1 className="text-3xl font-bold">Hotwheels</h1>
-          <p>
-            ACME Industries Ltd.
-            <br />
-            Providing reliable tech since 1992
-          </p>
+          <h1 className="font-bold text-3xl ">Hotwheels</h1>
+        </div>
+        <div>
+        </div>
+        <div>
+          <span className="footer-title">Company</span>
+          <a className="link link-hover">About us</a>
+          <a className="link link-hover">Contact</a>
+          <a className="link link-hover">Jobs</a>
+          <a className="link link-hover">Press kit</a>
         </div>
         <div>
           <span className="footer-title">Social</span>
