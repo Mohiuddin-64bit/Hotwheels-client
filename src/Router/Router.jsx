@@ -55,7 +55,7 @@ const router = createBrowserRouter([
       {
         path: '/carDetails/:id',
         element: <PrivateRouter><CarDetails></CarDetails></PrivateRouter>,
-        loader: ({params}) => fetch(`http://localhost:5000/allToy/carDetails/${params.id}`)
+        loader: ({params}) => fetch(`https://hotwheels-server.vercel.app/allToy/carDetails/${params.id}`)
         
       }
     ],

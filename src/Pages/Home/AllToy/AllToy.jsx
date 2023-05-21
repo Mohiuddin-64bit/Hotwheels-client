@@ -5,7 +5,7 @@ const AllToy = () => {
   const [allData, setAllData] = useState([]);
   const [searchText, setSearchText] = useState("");
   useEffect(() => {
-    fetch("http://localhost:5000/allToy")
+    fetch("https://hotwheels-server.vercel.app/allToy")
       .then((res) => res.json())
       .then((data) => {
         setAllData(data);
@@ -14,7 +14,7 @@ const AllToy = () => {
   console.log(searchText)
 
   const handleSearch = () => {
-    fetch(`http://localhost:5000/toySearchByName/${searchText}`)
+    fetch(`https://hotwheels-server.vercel.app/toySearchByName/${searchText}`)
     .then(res => res.json())
     .then(data => {
       setAllData(data)

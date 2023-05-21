@@ -14,7 +14,7 @@ const AddToy = () => {
   const onSubmit = (data) => {
     // Send the form data to the backend (e.g., via API or AJAX request)
     console.log(data);
-    fetch("http://localhost:5000/addToy", {
+    fetch("https://hotwheels-server.vercel.app/addToy", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
