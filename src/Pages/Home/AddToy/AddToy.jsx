@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../../Provider/AuthProvider";
 import { toast } from "react-toastify";
+import PageTitle from "../../PageTitle/PageTitle";
 const AddToy = () => {
   const { user } = useContext(AuthContext);
   const {
@@ -188,6 +189,7 @@ const AddToy = () => {
           </form>
         </div>
       </div>
+      <PageTitle title="Hotwheels | AddToy"></PageTitle>
     </>
   );
 };

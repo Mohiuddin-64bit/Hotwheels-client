@@ -1,6 +1,7 @@
 import { useState, useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
+import PageTitle from "../PageTitle/PageTitle";
 
 const Login = () => {
   const [error, setError] = useState("");
@@ -120,6 +121,7 @@ const Login = () => {
           </div>
         </div>
       </div>
+      <PageTitle title="Hotwheels | Login"></PageTitle>
     </div>
   );
 };

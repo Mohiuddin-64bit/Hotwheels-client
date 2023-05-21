@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../Provider/AuthProvider";
 import MyToyContent from "./MyToyContent";
 import { toast } from "react-toastify";
+import PageTitle from "../../PageTitle/PageTitle";
 const MyToy = () => {
   const [reload, setReload] = useState(false);
   const { user } = useContext(AuthContext);
@@ -83,6 +84,7 @@ const MyToy = () => {
           </tbody>
         </table>
       </div>
+      <PageTitle title="Hotwheels | MyToy"></PageTitle>
     </div>
   );
 };

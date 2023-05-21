@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import AllToyContent from "./AllToyContent";
+import PageTitle from "../../PageTitle/PageTitle";
 
 const AllToy = () => {
   const [allData, setAllData] = useState([]);
@@ -54,6 +55,7 @@ const AllToy = () => {
           </tbody>
         </table>
       </div>
+      <PageTitle title="Hotwheels | AllToy"></PageTitle>
     </div>
   );
 };

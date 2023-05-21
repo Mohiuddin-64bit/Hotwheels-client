@@ -1,3 +1,4 @@
+import PageTitle from "../../PageTitle/PageTitle";
 
 
 const BlogPage = () => {
@@ -69,6 +70,7 @@ const BlogPage = () => {
           {/* Add more content if desired */}
         </article>
       </div>
+      <PageTitle title="Hotwheels | Blog"></PageTitle>
     </div>
   );
 };
