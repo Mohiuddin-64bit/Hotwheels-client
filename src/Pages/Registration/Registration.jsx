@@ -14,21 +14,15 @@ const Registration = () => {
     const email = form.email.value;
     const password = form.password.value;
     const userName = form.name.value;
+    const photoURL = form.photoURL.value;
 
     console.log(password, email);
     // console.log(email, password, userName);
-
     setError("");
-
-    createUser(email, password, userName)
+    createUser(email, password, userName, photoURL)
       .then((result) => {
-        // result.user.updateProfile({
-        //   displayName: userName,
-        // });
         console.log(result.user);
-        // setUser(result.user);
         setSuccess("Account Create successfully");
-        // navigate("/");
       })
       .catch((error) => setError(error.message));
   };
