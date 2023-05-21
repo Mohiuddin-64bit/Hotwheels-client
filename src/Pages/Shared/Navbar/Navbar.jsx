@@ -1,9 +1,8 @@
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../Provider/AuthProvider";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 
 const Navbar = () => {
-  const [showName, setShowName] = useState(false);
   const { user, logOut } = useContext(AuthContext);
   const handleLogOut = () => {
     logOut()
@@ -12,10 +11,6 @@ const Navbar = () => {
       })
       .catch((error) => console.log(error));
   };
-  const toggleNameVisibility = () => {
-    setShowName(!showName);
-  };
-
   return (
     <div>
       <div className="navbar bg-base-100 px-12 mt-3">
@@ -45,16 +40,16 @@ const Navbar = () => {
                 <Link>Home</Link>
               </li>
               <li>
-                <Link to="allToy">All Toys</Link>
+                <Link>All Toys</Link>
               </li>
               <li>
-                <Link to="blog">Blog</Link>
+                <Link>Blog</Link>
               </li>
               {user ? (
                 <>
                   {" "}
                   <li>
-                    <Link to="myToy">My Toys</Link>
+                    <Link>My Toys</Link>
                   </li>
                   <li>
                     <Link to="addToy">Add a Toys</Link>
@@ -96,25 +91,21 @@ const Navbar = () => {
         <div className="navbar-end">
           {user ? (
             <>
-              {/* User profile */}
-              <div
-                className="flex items-center gap-5"
-                onMouseEnter={toggleNameVisibility}
-                onMouseLeave={toggleNameVisibility}
-              >
+              <div className="flex items-center gap-5">
                 <div className="flex items-center">
                   <div className="avatar online">
                     <div className="w-12 rounded-full">
-                      <img src={user.photoURL} alt="Profile Picture" />
+                      <img
+                        className="w-12 rounded-full"
+                        src={user.photoURL}
+                        title={user.displayName || user.email}
+                      />
                     </div>
                   </div>
-                  {showName && (
-                    <p className="font-bold lg:block hidden ml-4">
-                      {user.displayName || user.email}
-                    </p>
-                  )}
+                  <p className="font-bold lg:block hidden ml-4">
+                    {user.displayName || user.email}
+                  </p>
                 </div>
-                {/* Log Out button */}
                 <button
                   className="btn bg-custom-gradient"
                   onClick={handleLogOut}
@@ -125,8 +116,7 @@ const Navbar = () => {
             </>
           ) : (
             <>
-              {/* Login and Registration buttons */}
-              <button className="lg:btn p-2 rounded text-white text-sm bg-custom-gradient mr-2">
+              <button className="lg:btn p-2 rounded  text-white text-sm bg-custom-gradient mr-2">
                 <Link to="/login">Login</Link>
               </button>
               <button className="lg:btn p-2 rounded text-white text-sm bg-custom-gradient">
