@@ -10,6 +10,7 @@ import CarDetails from "../Pages/Home/ShopByCategory/CarDetails";
 import PrivateRouter from "../PrivateRouter/PrivateRouter";
 import AllToy from "../Pages/Home/AllToy/AllToy";
 import MyToy from "../Pages/Home/MyToy/MyToy";
+import ErrorPage from "../Pages/Home/ErrorPage/ErrorPage";
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,7 @@ const router = createBrowserRouter([
         <ToastContainer position="top-right" autoClose={3000} />
       </>
     ),
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: "/",
